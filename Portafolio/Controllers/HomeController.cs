@@ -15,7 +15,13 @@ namespace Portafolio.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var persona = new Persona()
+            {
+                Nombre = "Kaleb Uriel Miranda Cadena",
+                Edad = 30
+            
+            };
+            return View(persona);
         }
 
         public IActionResult Privacy()
