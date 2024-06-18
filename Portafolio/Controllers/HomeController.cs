@@ -15,13 +15,51 @@ namespace Portafolio.Controllers
 
         public IActionResult Index()
         {
-            var persona = new Persona()
-            {
-                Nombre = "Kaleb Uriel Miranda Cadena",
-                Edad = 30
             
+
+            var proyectos = ObtenerProyectos().Take(3).ToList();
+            var modelo = new HomeIndexViewModel()
+            {
+                proyectos = proyectos,
             };
-            return View(persona);
+
+            return View(modelo);
+        }
+
+        private List<Proyecto> ObtenerProyectos()
+        {
+            // Crear una lista de proyectos y añadir todos los proyectos en ella
+            return new List<Proyecto>
+    {
+        new Proyecto
+        {
+            Titulo = "Amazon",
+            Descripcion = "E-commerce realizado en ASP.NET Core",
+            Link = "https://amazon.com",
+            ImagenURL = "/imagenes/amazon.png"
+        },
+        new Proyecto
+        {
+            Titulo = "New York Times",
+            Descripcion = "Pagina de noticias en React",
+            Link = "https://nytimes.com",
+            ImagenURL = "/imagenes/nytimes.png"
+        },
+        new Proyecto
+        {
+            Titulo = "Reddit",
+            Descripcion = "Red social para compartir en comunidades",
+            Link = "https://reddit.com",
+            ImagenURL = "/imagenes/reddit.jpg"
+        },
+        new Proyecto
+        {
+            Titulo = "Steam",
+            Descripcion = "Tienda en línea para comprar videojuegos",
+            Link = "https://store.steampowered.com",
+            ImagenURL = "/imagenes/steam.jpg"
+        }
+    };
         }
 
         public IActionResult Privacy()
